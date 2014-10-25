@@ -1,29 +1,25 @@
 #!/bin/bash
 
+## I don't like --dev --force parameters. ;)
+echo "You have to change your configuration and remove this line"
+#exit 2
+
 DISK='/dev/sda'
 BOOT_DISK="${DISK}1"
 HOME_DISK="${DISK}2"
 
 
-##development: http://en.wikipedia.org/wiki/Characters_of_the_Final_Fantasy_VII_series#Professor_Hojo
+## http://en.wikipedia.org/wiki/Characters_of_the_Final_Fantasy_VII_series#Professor_Hojo
 ROOT_PASSWORD=$(/usr/bin/openssl passwd -crypt 'root')
 USER_NAME='hojo'
 USER_PASSWORD=$(/usr/bin/openssl passwd -crypt 'hojo')
-USER_HOME="/home/${USER_NAME}"
-NEST_PATH="${USER_HOME}/etc/nest"
 FQDN='hojo.ko'
 KEYMAP='de'
 TIMEZONE='UTC+2'
 LANGUAGE='en_US.UTF-8'
 TARGET_DIR='/mnt'
-
-## set to "yes", to allow  execution (not nice, but better than nothing)
-CONFIG_DONE="no"
-
-if [ ${CONFIG_DONE} != "yes" -a "$2" != "--dev" -o $# -eq 0 ]; then
-echo "You have to change your configuration!"
-exit 2
-fi
+USER_HOME="/home/${USER_NAME}"
+NEST_PATH="${USER_HOME}/etc/nest"
 
 case "$1" in
 "prepare-hdd")
@@ -44,20 +40,19 @@ echo ">>> set types <<<"
 /usr/bin/sgdisk --typecode=2:8300 ${DISK}
 
 echo ">>> format <<<"
-/usr/bin/mkfs.fat -q -F32 ${BOOT_DISK}
-/usr/bin/mkfs.ext3 -q ${HOME_DISK}
+/usr/bin/mkfs.fat -F32 ${BOOT_DISK}
+/usr/bin/mkfs.ext3 ${HOME_DISK}
 
 echo ">>> mount <<<"
 /usr/bin/mount ${HOME_DISK} ${TARGET_DIR}
 /usr/bin/mkdir ${TARGET_DIR}/boot
 /usr/bin/mount ${BOOT_DISK} ${TARGET_DIR}/boot
-
 ;;
 "install")
 echo "> > > install < < <"
 
 echo '>>> bootstrapping the base installation <<<'
-/usr/bin/pacstrap ${TARGET_DIR} base base-devel wpa_supplicant dialog gummiboot sudo
+/usr/bin/pacstrap ${TARGET_DIR} base base-devel wpa_supplicant dialog gummiboot
 
 echo '>>> generating the filesystem table <<<'
 /usr/bin/genfstab -p ${TARGET_DIR} >> "${TARGET_DIR}/etc/fstab"
@@ -131,8 +126,7 @@ git clone git@github.com:kolibri/arch-nest.git ${NEST_PATH}
     sudo puppet apply --parser future  \
         --hiera_config="${NEST_PATH}/puppet/hiera.yaml" \
           --modulepath="${NEST_PATH}/puppet/modules" \
-         --manifestdir="${NEST_PATH}/puppet/manifests" \
-        --debug --verbose
+        --debug --verbose ${NEST_PATH}/puppet/manifests/site.pp
 
 ;;
 "dump")

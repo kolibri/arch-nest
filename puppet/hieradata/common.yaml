@@ -1,0 +1,42 @@
+classes:
+    - ko
+    - ko::dotfiles
+    - x11
+
+ko::dotfiles:
+    kolibri:
+        install_dir: /home/kolibri/etc/dotfiles
+        git_repo: https://github.com/kolibri/dotfiles.git
+        git_branch: arch
+        install_script: bootstrap_arch.sh
+        install_script_param: "--force"
+
+ko::packages:
+    xterm:
+        ensure: installed
+    ttf-dejavu:
+        ensure: installed
+    awesome:
+        ensure: installed
+    firefox:
+        ensure: installed
+    xf86-video-intel:
+        ensure: installed
+    xf86-input-synaptics:
+        ensure: installed
+#    intellij-idea-community-edition:
+#        ensure: installed
+#    sublime-text-dev:
+#        ensure: installed
+#    phpstorm:
+#        ensure: installed
+#    jdk8-openjdk:
+#        ensure: installed
+#    scala:
+#        ensure: installed
+#    sbt:
+#        ensure: installed
+#    vagrant:
+#        ensure: installed
+
+x11::keyboard_layout: de
