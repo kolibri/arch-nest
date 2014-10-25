@@ -1,5 +1,4 @@
 define ko::dotfile(
-    $name = "vagrant",
     $install_dir = "/home/vagrant/dotfiles",
     $git_repo,
     $git_branch,

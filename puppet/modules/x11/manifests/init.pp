@@ -7,6 +7,6 @@ class x11(
 
     file { '/etc/X11/xorg.conf.d/00-keyboard.conf':
         ensure => file,
-        content => template("arch/00-keyboard.conf.erb"),
+        content => template("x11/00-keyboard.conf.erb"),
     }
 }

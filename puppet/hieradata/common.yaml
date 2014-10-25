@@ -1,6 +1,5 @@
 classes:
     - ko
-    - ko::dotfiles
     - x11
 
 ko::dotfiles:
@@ -12,6 +11,18 @@ ko::dotfiles:
         install_script_param: "--force"
 
 ko::packages:
+    wget:
+        ensure: installed
+    puppet:
+        ensure: installed
+    base-devel:
+        ensure: installed
+    nfs-utils:
+        ensure: installed
+    git:
+        ensure: installed
+    rsync:
+        ensure: installed
     xterm:
         ensure: installed
     ttf-dejavu:
