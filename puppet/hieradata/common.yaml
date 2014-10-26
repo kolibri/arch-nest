@@ -37,8 +37,8 @@ ko::packages:
         ensure: installed
 #    intellij-idea-community-edition:
 #        ensure: installed
-#    sublime-text-dev:
-#        ensure: installed
+    sublime-text-dev:
+        ensure: installed
 #    phpstorm:
 #        ensure: installed
 #    jdk8-openjdk:
