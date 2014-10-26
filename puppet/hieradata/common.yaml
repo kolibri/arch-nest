@@ -1,6 +1,7 @@
 classes:
     - ko
     - x11
+    - thinkpad_t420s
 
 ko::dotfiles:
     kolibri:
@@ -30,10 +31,6 @@ ko::packages:
     awesome:
         ensure: installed
     firefox:
-        ensure: installed
-    xf86-video-intel:
-        ensure: installed
-    xf86-input-synaptics:
         ensure: installed
 #    intellij-idea-community-edition:
 #        ensure: installed
