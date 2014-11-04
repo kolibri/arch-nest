@@ -1,3 +1,4 @@
+---
 classes:
     - ko
     - x11
@@ -12,7 +13,11 @@ ko::dotfiles:
         install_script_param: "--force"
 
 ko::packages:
+    python:
+        ensure: installed
     wget:
+        ensure: installed
+    zsh:
         ensure: installed
     puppet:
         ensure: installed
@@ -30,21 +35,45 @@ ko::packages:
         ensure: installed
     awesome:
         ensure: installed
+    vicious:
+        ensure: installed
     firefox:
         ensure: installed
-#    intellij-idea-community-edition:
-#        ensure: installed
+    alsa-utils:
+        ensure: installed
+    intellij-idea-community-edition:
+        ensure: installed
     sublime-text-dev:
         ensure: installed
-#    phpstorm:
-#        ensure: installed
-#    jdk8-openjdk:
-#        ensure: installed
-#    scala:
-#        ensure: installed
-#    sbt:
-#        ensure: installed
-#    vagrant:
-#        ensure: installed
+    phpstorm:
+        ensure: installed
+    jdk8-openjdk:
+        ensure: installed
+    scala:
+        ensure: installed
+    sbt:
+        ensure: installed
+    vagrant:
+        ensure: installed
+    vlc:
+        ensure: installed
+    ttf-bitstream-vera:
+        ensure: installed
+    ttf-inconsolata:
+        ensure: installed
+    ttf-liberation:
+        ensure: installed
+    ttf‑linux‑libertine:
+        ensure: installed
+    ttf-ms-fonts:
+        ensure: installed
+    ttf-symbola:
+        ensure: installed
+    terminus-font:
+        ensure: installed
+    flashplugin:
+        ensure: installed
+    xbindkeys:
+        ensure: installed
 
 x11::keyboard_layout: de

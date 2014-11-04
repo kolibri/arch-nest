@@ -3,5 +3,5 @@ class ko (
   $dotfiles = {},
 ){
   create_resources(package, $packages)
-  create_resources(ko::dotfile, $dotfiles)
+  #create_resources(ko::dotfile, $dotfiles)
 }

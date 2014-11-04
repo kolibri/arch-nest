@@ -1,6 +1,6 @@
 ---
 :backends: yaml
 :yaml:
-    :datadir: "%{settings::manifestdir}/../hieradata"
+    :datadir: "/home/kolibri/etc/nest/puppet/hieradata"
 :hierarchy:
     - common
